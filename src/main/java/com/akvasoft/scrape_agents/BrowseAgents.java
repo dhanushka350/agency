@@ -30,6 +30,8 @@ public class BrowseAgents implements InitializingBean {
     String lastCode = "";
     @Autowired
     private Repo repo;
+    @Autowired
+    private CodeRepo codeRepo;
 
     public void initialise() throws Exception {
 
@@ -73,6 +75,8 @@ public class BrowseAgents implements InitializingBean {
         boolean firstAttempt = true;
         boolean done = false;
         int count = 1;
+        List<Code> codeList = codeRepo.findAllByCodeBetween("12020", "11565");
+        System.out.println(codeList.size());
         Content last = repo.findTopByOrderByIdDesc();
         if (last != null) {
             lastCode = last.getCode();
@@ -84,7 +88,7 @@ public class BrowseAgents implements InitializingBean {
                 System.out.println("current code " + code + " count " + count);
 
                 if (firstAttempt && code.equalsIgnoreCase(lastCode) || code.equalsIgnoreCase("")) {
-                    scrapeContent(code);
+                    //scrapeContent(code);
                     lastCode = code;
                     System.err.println("skipping code that already scraped..");
                     firstAttempt = false;
