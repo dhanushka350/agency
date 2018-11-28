@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Repo extends JpaRepository<Content, Integer> {
     Content findTopByOrderByIdDesc();
+    boolean existsByCode(String code);
 }

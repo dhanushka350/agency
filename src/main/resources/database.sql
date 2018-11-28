@@ -18,6 +18,9 @@
 --
 -- Table structure for table `agent`
 --
+DROP database agents;
+CREATE database agents;
+use agents
 
 DROP TABLE IF EXISTS `agent`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
